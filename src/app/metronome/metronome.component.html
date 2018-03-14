@@ -1,0 +1,12 @@
+<div class="metronome">
+  <div class="bpm-slider">
+    <div>{{bpm}} BPM</div>
+    <input type="range"
+           min="40"
+           max="220"
+           #ref
+           (input)="changeBpm(ref.value)"
+           [(ngModel)]="bpm" />
+  </div>
+  <button (click)="toggle()">{{playing ? 'Stop' : 'Start'}}</button>
+</div>
