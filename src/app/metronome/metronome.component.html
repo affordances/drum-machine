@@ -5,7 +5,7 @@
            min="40"
            max="220"
            #ref
-           (input)="changeBpm(ref.value)"
+           (input)="updateBpm(ref.value)"
            [(ngModel)]="bpm" />
   </div>
   <button (click)="toggle()">{{playing ? 'Stop' : 'Start'}}</button>

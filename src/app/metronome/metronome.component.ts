@@ -9,22 +9,32 @@ import { Howl, Howler } from "howler";
 export class MetronomeComponent {
   bpm: number = 130;
   playing: boolean = false;
-  click: string = './click1.wav';
+  timer: number;
+  sound = new Howl({src: ['./assets/click1.mp3']});
 
   constructor() {}
 
   ngOnInit() {
   }
 
-  changeBpm(bpm: number): void {
-    this.bpm = bpm;
+  updateBpm(bpm: number): void {
+    if (this.playing) {
+      clearInterval(this.timer);
+      this.timer = setInterval(() => this.playClick(), (60 / this.bpm) * 1000);
+    }
+  }
+
+  playClick() {
+    this.sound.play();
   }
 
   toggle(): void {
-    let sound = new Howl({
-      src: [this.click]
-    });
-
-    sound.play();
+    if (this.playing) {
+      clearInterval(this.timer);
+      this.playing = false;
+    } else {
+      this.timer = setInterval(() => this.playClick(), (60 / this.bpm) * 1000);
+      this.playing = true;
+    }
   }
 }
