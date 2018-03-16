@@ -2,9 +2,9 @@
   <div [ngClass]="isFlashing ? 'flashing' : 'not-flashing'"></div>
   <div class="bpm-slider-container">
     <div class="bpm-adjustment-container">
-      <button><</button>
+      <button (click)="decreaseBpm()"><</button>
       <div class="bpm-number">{{bpm}} BPM</div>
-      <button>></button>
+      <button (click)="increaseBpm()">></button>
     </div>
     <input type="range"
            min="40"

@@ -19,7 +19,17 @@ export class MetronomeComponent {
   ngOnInit() {
   }
 
-  updateBpm(bpm: number): void {
+  decreaseBpm() {
+    this.bpm -= 1;
+    this.updateBpm();
+  }
+
+  increaseBpm() {
+    this.bpm += 1;
+    this.updateBpm();
+  }
+
+  updateBpm(): void {
     if (this.playing) {
       clearInterval(this.timer);
       clearInterval(this.flasher);
