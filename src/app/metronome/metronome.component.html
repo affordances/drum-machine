@@ -1,6 +1,11 @@
 <div class="metronome">
-  <div class="bpm-slider">
-    <div>{{bpm}} BPM</div>
+  <div [ngClass]="isFlashing ? 'flashing' : 'not-flashing'"></div>
+  <div class="bpm-slider-container">
+    <div class="bpm-adjustment-container">
+      <button><</button>
+      <div class="bpm-number">{{bpm}} BPM</div>
+      <button>></button>
+    </div>
     <input type="range"
            min="40"
            max="220"

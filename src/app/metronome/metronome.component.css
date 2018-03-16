@@ -1,17 +1,52 @@
+* {
+  /*border: 1px solid black;*/
+}
+
 .metronome {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  max-width: 375px;
   margin: 0 auto;
   padding: 30px;
 }
 
-.bpm-slider input {
-  width: 100%;
+.not-flashing {
+  height: 50px;
+  width: 50px;
   margin: 10px;
+  border: 1px solid black;
+}
+
+.flashing {
+  height: 50px;
+  width: 50px;
+  background-color: #C94D46;
+  margin: 10px;
+  border: 1px solid black;
+}
+
+.bpm-adjustment-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.bpm-slider-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.bpm-number {
+  margin: 20px;
+}
+
+.bpm-slider input {
+  margin: 20px;
 }
 
 .metronome button {
