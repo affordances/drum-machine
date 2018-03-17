@@ -9,11 +9,9 @@ import { Howl, Howler } from "howler";
 export class MetronomeComponent {
   bpm: number = 130;
   playing: boolean = false;
-  isFlashing = [true, false, false, false];
-  beatsPerMeasure: number = 4;
-  count: number = 0;
+  activeBeats = [true, false, false, false];
   timer: number;
-  flasher: number;
+  beat: number = 0;
   sound = new Howl({src: ['./assets/click1.mp3']});
 
   constructor() {}
@@ -21,38 +19,32 @@ export class MetronomeComponent {
   ngOnInit() {
   }
 
-  setAccent(index) {
-    this.isFlashing[index - 1] = !this.isFlashing[index - 1];
+  toggleBeat(i) {
+    this.activeBeats[i] = !this.activeBeats[i];
   }
 
   updateBpm(): void {
     if (this.playing) {
       clearInterval(this.timer);
-      clearInterval(this.flasher);
       this.timer = setInterval(() => this.playClick(), (15 / this.bpm) * 1000);
-      this.flasher = setInterval(() => this.flash(), (15 / this.bpm) * 1000);
     }
   }
 
-  flash() {
-    this.isFlashing = true;
-    setTimeout(() => {this.isFlashing = false}, 150);
-  }
-
   playClick() {
-    this.sound.play();
+    if (this.activeBeats[this.beat]) {
+      this.sound.play();
+    }
+    this.beat = (this.beat + 1) % 4;
   }
 
   toggle(): void {
     if (this.playing) {
       clearInterval(this.timer);
-      clearInterval(this.flasher);
       this.playing = false;
-      this.isFlashing = false;
     } else {
-      this.timer = setInterval(() => this.playClick(), (60 / this.bpm) * 1000);
-      this.flasher = setInterval(() => this.flash(), (60 / this.bpm) * 1000);
+      this.timer = setInterval(() => this.playClick(), (15 / this.bpm) * 1000);
       this.playing = true;
     }
+    this.playClick();
   }
 }

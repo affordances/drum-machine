@@ -12,19 +12,19 @@
   padding: 30px;
 }
 
-.flashers-container {
+.accents-container {
   display: flex;
   flex-direction: row;
 }
 
-.not-flashing {
+.inactiveBeat {
   height: 50px;
   width: 50px;
   margin: 10px;
   border: 1px solid black;
 }
 
-.flashing {
+.activeBeat {
   height: 50px;
   width: 50px;
   background-color: #C94D46;

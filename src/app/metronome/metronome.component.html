@@ -1,9 +1,9 @@
 <div class="metronome">
-  <div class="flashers-container">
-    <div [ngClass]="isFlashing[0] ? 'flashing' : 'not-flashing'" (click)="setAccent(1)"></div>
-    <div [ngClass]="isFlashing[1] ? 'flashing' : 'not-flashing'" (click)="setAccent(2)"></div>
-    <div [ngClass]="isFlashing[2] ? 'flashing' : 'not-flashing'" (click)="setAccent(3)"></div>
-    <div [ngClass]="isFlashing[3] ? 'flashing' : 'not-flashing'" (click)="setAccent(4)"></div>
+  <div class="accents-container">
+    <div [ngClass]="activeBeats[0] ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat(0)"></div>
+    <div [ngClass]="activeBeats[1] ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat(1)"></div>
+    <div [ngClass]="activeBeats[2] ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat(2)"></div>
+    <div [ngClass]="activeBeats[3] ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat(3)"></div>
   </div>
   <div class="bpm-slider-container">
     <div class="bpm-number">{{bpm}} BPM</div>
