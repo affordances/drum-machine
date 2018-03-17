@@ -1,11 +1,12 @@
 <div class="metronome">
-  <div [ngClass]="isFlashing ? 'flashing' : 'not-flashing'"></div>
+  <div class="flashers-container">
+    <div [ngClass]="isFlashing[0] ? 'flashing' : 'not-flashing'" (click)="setAccent(1)"></div>
+    <div [ngClass]="isFlashing[1] ? 'flashing' : 'not-flashing'" (click)="setAccent(2)"></div>
+    <div [ngClass]="isFlashing[2] ? 'flashing' : 'not-flashing'" (click)="setAccent(3)"></div>
+    <div [ngClass]="isFlashing[3] ? 'flashing' : 'not-flashing'" (click)="setAccent(4)"></div>
+  </div>
   <div class="bpm-slider-container">
-    <div class="bpm-adjustment-container">
-      <button (click)="decreaseBpm()"><</button>
-      <div class="bpm-number">{{bpm}} BPM</div>
-      <button (click)="increaseBpm()">></button>
-    </div>
+    <div class="bpm-number">{{bpm}} BPM</div>
     <input type="range"
            min="40"
            max="220"
