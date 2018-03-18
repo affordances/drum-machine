@@ -14,9 +14,9 @@ export class MetronomeComponent {
   instruments = [];
   beatLocations = {};
   sounds = {
-    hat: new Howl({src: ['./assets/chh.wav']}),
-    snare: new Howl({src: ['./assets/sd.wav']}),
-    kick: new Howl({src: ['./assets/kick.wav']})
+    "Closed Hat": new Howl({src: ['./assets/chh.wav']}),
+    "Snare": new Howl({src: ['./assets/sd.wav']}),
+    "Kick": new Howl({src: ['./assets/kick.wav']})
   };
 
   constructor() {
@@ -54,10 +54,11 @@ export class MetronomeComponent {
     if (this.playing) {
       clearInterval(this.timer);
       this.playing = false;
+      this.beat = 0;
     } else {
       this.timer = setInterval(() => this.playSounds(), (15 / this.bpm) * 1000);
       this.playing = true;
+      this.playSounds();
     }
-    this.playSounds();
   }
 }

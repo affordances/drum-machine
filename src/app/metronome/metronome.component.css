@@ -7,16 +7,25 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
   margin: 0 auto;
   padding: 30px;
 }
 
 .instruments-container-container {
-  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  /*border: 1px solid black;*/
 }
 
-.instruments-container {
+.instrument-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 50px;
+}
+
+.instrument-container {
   display: flex;
   flex-direction: row;
 }
@@ -42,6 +51,7 @@
 }
 
 .bpm-number {
+  text-align: center;
   margin: 20px;
 }
 

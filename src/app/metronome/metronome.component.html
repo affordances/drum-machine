@@ -1,6 +1,9 @@
 <div class="metronome">
-  <div class="instruments-container-container">
-    <div class="instruments-container" *ngFor="let instrument of instruments">
+  <div class="instruments-container-container" *ngFor="let instrument of instruments">
+    <div class="instrument-name">
+      {{instrument}}
+    </div>
+    <div class="instrument-container">
       <div *ngFor="let beat of beatLocations[instrument]; let i = index"
            [ngClass]="beat ? 'activeBeat' : 'inactiveBeat'"
            (click)="toggleBeat(instrument, i)">
