@@ -11,6 +11,7 @@ export class MetronomeComponent {
   playing: boolean = false;
   timer: number;
   beat: number = 0;
+  instruments = [];
   beatLocations = {};
   sounds = {
     hat: new Howl({src: ['./assets/chh.wav']}),
