@@ -1,17 +1,17 @@
 <div class="metronome">
-  <div class="instruments-container-container" *ngFor="let instrument of instruments">
-    <div class="instrument-name">
-      {{instrument}}
-    </div>
-    <div class="instrument-container">
+  <div class="instruments-container-container">
+    <div class="instrument-container" *ngFor="let instrument of instruments">
+      <div class="instrument-name">
+        {{instrument}}
+      </div>
       <div *ngFor="let beat of beatLocations[instrument]; let i = index"
-           [ngClass]="beat ? 'activeBeat' : 'inactiveBeat'"
+           [ngClass]="{'beat': true, 'active-beat': beat, 'quarter-note-left-border': i % 4 === 0}"
            (click)="toggleBeat(instrument, i)">
       </div>
     </div>
   </div>
   <div class="bpm-slider-container">
-    <div class="bpm-number">{{bpm}} BPM</div>
+    <div class="bpm-number">BPM: {{bpm}}</div>
     <input type="range"
            min="40"
            max="220"
@@ -19,5 +19,6 @@
            (input)="updateBpm(ref.value)"
            [(ngModel)]="bpm" />
   </div>
-  <button (click)="toggle()">{{playing ? 'Stop' : 'Start'}}</button>
+  <button (window:keydown)="toggle($event)" (click)="toggle()">{{playing ? 'Stop' : 'Start'}}</button>
+  <button (click)="clear()">Clear</button>
 </div>

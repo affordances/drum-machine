@@ -12,9 +12,7 @@
 }
 
 .instruments-container-container {
-  display: flex;
-  flex-direction: row;
-  /*border: 1px solid black;*/
+  border: 2px solid black;
 }
 
 .instrument-name {
@@ -23,6 +21,7 @@
   justify-content: center;
   width: 100px;
   height: 50px;
+  border: 1px solid black;
 }
 
 .instrument-container {
@@ -30,17 +29,18 @@
   flex-direction: row;
 }
 
-.inactiveBeat {
+.beat {
   height: 50px;
   width: 50px;
   border: 1px solid black;
 }
 
-.activeBeat {
-  height: 50px;
-  width: 50px;
+.active-beat {
   background-color: #C94D46;
-  border: 1px solid black;
+}
+
+.quarter-note-left-border {
+  border-left-width: 2px;
 }
 
 .bpm-slider-container {
@@ -52,7 +52,8 @@
 
 .bpm-number {
   text-align: center;
-  margin: 20px;
+  margin: 30px;
+  font-size: 25px;
 }
 
 .bpm-slider input {
@@ -68,4 +69,5 @@
   color: #fff;
   font-size: 18px;
   outline: none;
+  margin: 10px;
 }
