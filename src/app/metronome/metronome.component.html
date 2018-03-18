@@ -1,21 +1,8 @@
 <div class="metronome">
-  <div class="instruments-container">
-    <div [ngClass]="hats[0] ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat('hats', 0)"></div>
-    <div [ngClass]="hats[1] ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat('hats', 1)"></div>
-    <div [ngClass]="hats[2] ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat('hats', 2)"></div>
-    <div [ngClass]="hats[3] ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat('hats', 3)"></div>
-  </div>
-  <div class="instruments-container">
-    <div [ngClass]="snares[0] ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat('snares', 0)"></div>
-    <div [ngClass]="snares[1] ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat('snares', 1)"></div>
-    <div [ngClass]="snares[2] ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat('snares', 2)"></div>
-    <div [ngClass]="snares[3] ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat('snares', 3)"></div>
-  </div>
-  <div class="instruments-container">
-    <div [ngClass]="kicks[0] ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat('kicks', 0)"></div>
-    <div [ngClass]="kicks[1] ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat('kicks', 1)"></div>
-    <div [ngClass]="kicks[2] ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat('kicks', 2)"></div>
-    <div [ngClass]="kicks[3] ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat('kicks', 3)"></div>
+  <div class="instruments-container-container">
+    <div class="instruments-container" *ngFor="let instrument of instruments">
+      <div *ngFor="let beat of beatLocations[instrument]; let i = index" [ngClass]="beat ? 'activeBeat' : 'inactiveBeat'" (click)="toggleBeat(instrument, i)"></div>
+    </div>
   </div>
   <div class="bpm-slider-container">
     <div class="bpm-number">{{bpm}} BPM</div>

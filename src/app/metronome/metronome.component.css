@@ -12,6 +12,10 @@
   padding: 30px;
 }
 
+.instruments-container-container {
+  border: 1px solid black;
+}
+
 .instruments-container {
   display: flex;
   flex-direction: row;
@@ -20,7 +24,6 @@
 .inactiveBeat {
   height: 50px;
   width: 50px;
-  margin: 10px;
   border: 1px solid black;
 }
 
@@ -28,7 +31,6 @@
   height: 50px;
   width: 50px;
   background-color: #C94D46;
-  margin: 10px;
   border: 1px solid black;
 }
 

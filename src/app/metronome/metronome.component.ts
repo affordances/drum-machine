@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { Howl, Howler } from "howler";
+import { Howl } from "howler";
 
 @Component({
   selector: 'app-metronome',
@@ -11,26 +11,25 @@ export class MetronomeComponent {
   playing: boolean = false;
   timer: number;
   beat: number = 0;
-  hats = [false, false, false, false];
-  hat = new Howl({src: ['./assets/chh.wav']});
-  snares = [false, false, false, false];
-  snare = new Howl({src: ['./assets/sd.wav']});
-  kicks = [true, false, false, false];
-  kick = new Howl({src: ['./assets/kick.wav']});
+  beatLocations = {};
+  sounds = {
+    hat: new Howl({src: ['./assets/chh.wav']}),
+    snare: new Howl({src: ['./assets/sd.wav']}),
+    kick: new Howl({src: ['./assets/kick.wav']})
+  };
 
-  constructor() {}
+  constructor() {
+    Object.keys(this.sounds).forEach(instrument =>
+      this.beatLocations[instrument] = Array(16).fill(false));
+
+    this.instruments = Object.keys(this.sounds);
+  }
 
   ngOnInit() {
   }
 
-  toggleBeat(instrument, beatLocation) {
-    if (instrument === 'hats') {
-      this.hats[beatLocation] = !this.hats[beatLocation];
-    } else if (instrument === 'snares') {
-      this.snares[beatLocation] = !this.snares[beatLocation];
-    } else {
-      this.kicks[beatLocation] = !this.kicks[beatLocation];
-    }
+  toggleBeat(instrument, location) {
+    this.beatLocations[instrument][location] = !this.beatLocations[instrument][location];
   }
 
   updateBpm(): void {
@@ -41,16 +40,13 @@ export class MetronomeComponent {
   }
 
   playSounds() {
-    if (this.hats[this.beat]) {
-      this.hat.play();
-    }
-    if (this.snares[this.beat]) {
-      this.snare.play();
-    }
-    if (this.kicks[this.beat]) {
-      this.kick.play();
-    }
-    this.beat = (this.beat + 1) % 4;
+    const instruments = Object.keys(this.sounds);
+    instruments.forEach(instrument => {
+      if (this.beatLocations[instrument][this.beat]) {
+        this.sounds[instrument].play()
+      }
+    });
+    this.beat = (this.beat + 1) % 16;
   }
 
   toggle(): void {
