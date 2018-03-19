@@ -14,14 +14,20 @@ export class MetronomeComponent {
   instruments = [];
   beatLocations = {};
   sounds = {
-    "Closed Hat": new Howl({src: ['./assets/chh.wav']}),
-    "Snare": new Howl({src: ['./assets/sd.wav']}),
-    "Kick": new Howl({src: ['./assets/kick.wav']})
+    "open hat": new Howl({src: ['./assets/ohh.wav']}),
+    "closed hat": new Howl({src: ['./assets/chh.wav']}),
+    "snare": new Howl({src: ['./assets/sd.wav']}),
+    "kick": new Howl({src: ['./assets/kick.wav']})
   };
 
   constructor() {
     Object.keys(this.sounds).forEach(instrument =>
       this.beatLocations[instrument] = Array(16).fill(false));
+
+    this.beatLocations["kick"][0] = true;
+    this.beatLocations["kick"][4] = true;
+    this.beatLocations["kick"][8] = true;
+    this.beatLocations["kick"][12] = true;
 
     this.instruments = Object.keys(this.sounds);
   }
@@ -51,7 +57,6 @@ export class MetronomeComponent {
   }
 
   toggle(event): void {
-    console.log(event);
     if (!event || event.keyCode === 32) {
       if (this.playing) {
         clearInterval(this.timer);

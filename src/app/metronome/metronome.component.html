@@ -9,16 +9,20 @@
            (click)="toggleBeat(instrument, i)">
       </div>
     </div>
+    <div class="bpm-number-and-slider-container">
+      <div class="bpm-number">{{bpm}} bpm</div>
+      <input type="range"
+             min="40"
+             max="220"
+             #ref
+             (input)="updateBpm(ref.value)"
+             [(ngModel)]="bpm" />
+    </div>
   </div>
-  <div class="bpm-slider-container">
-    <div class="bpm-number">BPM: {{bpm}}</div>
-    <input type="range"
-           min="40"
-           max="220"
-           #ref
-           (input)="updateBpm(ref.value)"
-           [(ngModel)]="bpm" />
+  <div class="buttons-container">
+    <button (window:keydown)="toggle($event)"
+            (click)="toggle()">{{playing ? 'stop' : 'start'}}
+    </button>
+    <button (click)="clear()">clear</button>
   </div>
-  <button (window:keydown)="toggle($event)" (click)="toggle()">{{playing ? 'Stop' : 'Start'}}</button>
-  <button (click)="clear()">Clear</button>
 </div>

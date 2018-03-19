@@ -7,8 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  padding: 30px;
+  margin-top: 100px;
 }
 
 .instruments-container-container {
@@ -36,34 +35,48 @@
 }
 
 .active-beat {
-  background-color: #C94D46;
+  background-color: #66ccff;
 }
 
 .quarter-note-left-border {
   border-left-width: 2px;
 }
 
-.bpm-slider-container {
+.bpm-number-and-slider-container {
+  width: 100%;
+  height: 50px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 20px;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 2px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 }
 
 .bpm-number {
-  text-align: center;
-  margin: 30px;
-  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 50px;
+  border-right: 3px solid black;
 }
 
-.bpm-slider input {
-  margin: 20px;
+input[type=range] {
+  width: 800px;
+  padding-right: 20px;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .metronome button {
-  background: #C94D46;
+  background: #66ccff;
   padding: 10px;
-  border: 1px solid #832420;
   border-radius: 2px;
   width: 100px;
   color: #fff;
