@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-staff',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./staff.component.css']
 })
 export class StaffComponent implements OnInit {
+  @Input() beatLocations: any;
 
   constructor() { }
 

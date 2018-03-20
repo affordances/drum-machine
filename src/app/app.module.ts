@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { MetronomeComponent } from './metronome/metronome.component';
 import { StaffComponent } from './staff/staff.component';
 import { ControlsComponent } from './controls/controls.component';
 
@@ -12,7 +11,6 @@ import { ControlsComponent } from './controls/controls.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MetronomeComponent,
     StaffComponent,
     ControlsComponent
   ],

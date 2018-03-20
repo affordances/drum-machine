@@ -1,2 +1,9 @@
 <app-staff></app-staff>
-<app-controls></app-controls>
+<app-controls
+  [bpm]="bpm"
+  [playing]="playing"
+  (playSoundsEvent)="playSounds()"
+  (updateBpmEvent)="updateBpm()"
+  (togglePlayEvent)="togglePlay()"
+  (clearEvent)="clear()">
+</app-controls>
