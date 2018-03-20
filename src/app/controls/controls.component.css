@@ -1,47 +1,3 @@
-* {
-  /*border: 1px solid black;*/
-}
-
-.metronome {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 100px;
-}
-
-.instruments-container-container {
-  border: 2px solid black;
-}
-
-.instrument-name {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 50px;
-  border: 1px solid black;
-}
-
-.instrument-container {
-  display: flex;
-  flex-direction: row;
-}
-
-.beat {
-  height: 50px;
-  width: 50px;
-  border: 1px solid black;
-}
-
-.active-beat {
-  background-color: #66ccff;
-}
-
-.quarter-note-left-border {
-  border-left-width: 2px;
-}
-
 .bpm-number-and-slider-container {
   width: 100%;
   height: 50px;
@@ -74,7 +30,7 @@ input[type=range] {
   justify-content: space-between;
 }
 
-.metronome button {
+button {
   background: #66ccff;
   padding: 10px;
   border-radius: 2px;

@@ -1,0 +1,15 @@
+<div class="bpm-number-and-slider-container">
+  <div class="bpm-number">{{bpm}} bpm</div>
+  <input type="range"
+         min="40"
+         max="220"
+         #ref
+         (input)="updateBpm(ref.value)"
+         [(ngModel)]="bpm" />
+</div>
+<div class="buttons-container">
+  <button (window:keydown)="toggle($event)"
+          (click)="toggle()">{{playing ? 'stop' : 'start'}}
+  </button>
+  <button (click)="clear()">clear</button>
+</div>

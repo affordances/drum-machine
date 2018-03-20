@@ -1,0 +1,11 @@
+<div class="instruments-container-container">
+  <div class="instrument-container" *ngFor="let instrument of instruments">
+    <div class="instrument-name">
+      {{instrument}}
+    </div>
+    <div *ngFor="let beat of beatLocations[instrument]; let i = index"
+         [ngClass]="{'beat': true, 'active-beat': beat, 'quarter-note-left-border': i % 4 === 0}"
+         (click)="toggleBeat(instrument, i)">
+    </div>
+  </div>
+</div>

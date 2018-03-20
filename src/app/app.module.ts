@@ -5,12 +5,16 @@ import { NgClass } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { MetronomeComponent } from './metronome/metronome.component';
+import { StaffComponent } from './staff/staff.component';
+import { ControlsComponent } from './controls/controls.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MetronomeComponent
+    MetronomeComponent,
+    StaffComponent,
+    ControlsComponent
   ],
   imports: [
     BrowserModule,

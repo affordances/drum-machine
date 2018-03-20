@@ -1,0 +1,31 @@
+.instruments-container-container {
+  border: 2px solid black;
+}
+
+.instrument-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+.instrument-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.beat {
+  height: 50px;
+  width: 50px;
+  border: 1px solid black;
+}
+
+.active-beat {
+  background-color: #66ccff;
+}
+
+.quarter-note-left-border {
+  border-left-width: 2px;
+}
