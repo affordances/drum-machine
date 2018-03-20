@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { EventsService } from '../events.service';
 
 @Component({
   selector: 'app-staff',
@@ -7,8 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class StaffComponent implements OnInit {
   @Input() beatLocations: any;
+  @Input() instruments: any;
 
-  constructor() { }
+  constructor(private es: EventsService) { }
 
   ngOnInit() {
   }

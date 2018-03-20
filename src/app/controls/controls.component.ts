@@ -15,4 +15,6 @@ export class ControlsComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  emitPlay() { this.es.togglePlayEvent.emit() }
 }

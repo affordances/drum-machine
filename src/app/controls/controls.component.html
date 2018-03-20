@@ -8,8 +8,8 @@
          [(ngModel)]="bpm" />
 </div>
 <div class="buttons-container">
-  <button (window:keydown)="es.togglePlayEvent.emit($event)"
-          (click)="es.togglePlayEvent.emit($event)">{{playing ? 'stop' : 'start'}}
+  <button (window:keydown)="emitPlay($event)"
+          (click)="emitPlay($event)">{{playing ? 'stop' : 'start'}}
   </button>
   <button (click)="clear()">clear</button>
 </div>

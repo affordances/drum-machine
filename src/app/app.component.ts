@@ -50,7 +50,7 @@ export class AppComponent {
         this.timer = setInterval(() => this.es.playSoundsEvent.emit(), (15 / this.bpm) * 1000);
         this.playing = true;
         this.beat = 0;
-        this.playSoundsEvent.emit();
+        this.es.playSoundsEvent.emit();
       }
     }
   }
