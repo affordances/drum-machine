@@ -1,12 +1,14 @@
-<app-staff
-  [beatLocations]="beatLocations"
-  [instruments]="instruments">
-</app-staff>
-<app-controls
-  [bpm]="bpm"
-  [playing]="playing"
-  (playSoundsEvent)="playSounds()"
-  (updateBpmEvent)="updateBpm()"
-  (togglePlayEvent)="togglePlay()"
-  (clearEvent)="clear()">
-</app-controls>
+<div class="master-container">
+  <app-staff
+    [beatLocations]="beatLocations"
+    [instruments]="instruments">
+  </app-staff>
+  <app-controls
+    [bpm]="bpm"
+    [playing]="playing"
+    (playSoundsEvent)="playSounds()"
+    (updateBpmEvent)="updateBpm()"
+    (togglePlayEvent)="togglePlay()"
+    (clearEvent)="clear()">
+  </app-controls>
+</div>

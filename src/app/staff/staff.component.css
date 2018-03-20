@@ -1,5 +1,4 @@
 .instruments-container-container {
-  width: 1000px;
   border: 2px solid black;
 }
 
@@ -15,6 +14,7 @@
 .instrument-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .beat {

@@ -1,11 +1,13 @@
 <div class="controls-container">
   <div class="bpm-number-and-slider-container">
     <div class="bpm-number">{{bpm}} bpm</div>
-    <input type="range"
-           min="40"
-           max="220"
-           (change)="emitUpdateBpm()"
-           [(ngModel)]="bpm" />
+    <div class="range-container">
+      <input type="range"
+             min="40"
+             max="220"
+             (change)="emitUpdateBpm()"
+             [(ngModel)]="bpm" />
+    </div>
   </div>
   <div class="buttons-container">
     <button (click)="emitPlay($event)">{{playing ? 'stop' : 'start'}}</button>

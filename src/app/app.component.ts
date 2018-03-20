@@ -33,7 +33,7 @@ export class AppComponent {
     this.instruments = Object.keys(this.sounds);
 
     es.togglePlayEvent.subscribe(e => {
-      this.togglePlay();
+      this.togglePlay(e);
     });
 
     es.playSoundsEvent.subscribe(e => {
