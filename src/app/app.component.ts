@@ -1,5 +1,6 @@
-import { Component, Output, Input, EventEmitter } from '@angular/core';
+import { Component, Output, Input } from '@angular/core';
 import { Howl } from "howler";
+import { EventsService } from './events.service';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,6 @@ import { Howl } from "howler";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @Output() playSoundsEvent = new EventEmitter<any>();
-  @Output() updateBpmEvent = new EventEmitter<any>();
-  @Output() togglePlayEvent = new EventEmitter<any>();
-  @Output() clearEvent = new EventEmitter<any>();
-
   bpm: number = 130;
   playing: boolean = false;
   timer: number;
@@ -25,7 +21,7 @@ export class AppComponent {
     "kick": new Howl({src: ['./assets/kick.wav']})
   };
 
-  constructor() {
+  constructor(private es: EventsService) {
     Object.keys(this.sounds).forEach(instrument =>
       this.beatLocations[instrument] = Array(16).fill(false));
 
@@ -40,7 +36,7 @@ export class AppComponent {
   updateBpm(): void {
     if (this.playing) {
       clearInterval(this.timer);
-      this.timer = setInterval(() => this.playSounds(), (15 / this.bpm) * 1000);
+      this.timer = setInterval(() => this.es.playSoundsEvent.emit(), (15 / this.bpm) * 1000);
     }
   }
 
@@ -51,7 +47,7 @@ export class AppComponent {
         this.playing = false;
         this.beat = 0;
       } else {
-        this.timer = setInterval(() => this.playSoundsEvent.emit(), (15 / this.bpm) * 1000);
+        this.timer = setInterval(() => this.es.playSoundsEvent.emit(), (15 / this.bpm) * 1000);
         this.playing = true;
         this.beat = 0;
         this.playSoundsEvent.emit();

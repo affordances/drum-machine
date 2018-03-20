@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {EventsService} from '../events.service';
 
 @Component({
   selector: 'app-controls',
@@ -8,6 +9,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ControlsComponent implements OnInit {
   @Input() bpm: number;
   @Input() playing: boolean;
+  @Input() togglePlayEvent: any;
+
+  constructor(private es: EventsService) {}
 
   ngOnInit() {
   }
