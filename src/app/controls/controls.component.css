@@ -1,3 +1,9 @@
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+}
+
 .bpm-number-and-slider-container {
   width: 100%;
   height: 50px;

@@ -1,4 +1,4 @@
-import { Component, Output, Input } from '@angular/core';
+import { Component, Output, Input, HostListener } from '@angular/core';
 import { Howl } from "howler";
 import { EventsService } from './events.service';
 
@@ -31,15 +31,34 @@ export class AppComponent {
     this.beatLocations["kick"][12] = true;
 
     this.instruments = Object.keys(this.sounds);
+
+    es.togglePlayEvent.subscribe(e => {
+      this.togglePlay();
+    });
+
+    es.playSoundsEvent.subscribe(e => {
+      this.playSounds();
+    });
+
+    es.updateBpmEvent.subscribe(e => {
+      this.updateBpm(e);
+    });
+
+    es.clearEvent.subscribe(e => {
+      this.clear();
+    });
   }
 
-  updateBpm(): void {
+  updateBpm(bpm): void {
+    this.bpm = bpm;
+
     if (this.playing) {
       clearInterval(this.timer);
       this.timer = setInterval(() => this.es.playSoundsEvent.emit(), (15 / this.bpm) * 1000);
     }
   }
 
+  @HostListener('window:keydown', ['$event'])
   togglePlay(event): void {
     if (!event || event.keyCode === 32) {
       if (this.playing) {

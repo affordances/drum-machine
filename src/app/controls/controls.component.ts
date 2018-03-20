@@ -10,6 +10,8 @@ export class ControlsComponent implements OnInit {
   @Input() bpm: number;
   @Input() playing: boolean;
   @Input() togglePlayEvent: any;
+  @Input() updateBpmEvent: any;
+  @Input() clearEvent: any;
 
   constructor(private es: EventsService) {}
 
@@ -17,4 +19,8 @@ export class ControlsComponent implements OnInit {
   }
 
   emitPlay() { this.es.togglePlayEvent.emit() }
+
+  emitUpdateBpm() { this.es.updateBpmEvent.emit(this.bpm) }
+
+  emitClear() { this.es.clearEvent.emit() }
 }
