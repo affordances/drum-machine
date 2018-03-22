@@ -7,8 +7,8 @@
     [bpm]="bpm"
     [playing]="playing"
     (playSoundsEvent)="playSounds()"
-    (updateBpmEvent)="updateBpm()"
-    (togglePlayEvent)="togglePlay()"
+    (updateBpmEvent)="updateBpm(bpm)"
+    (togglePlayEvent)="togglePlay($event)"
     (clearEvent)="clear()">
   </app-controls>
 </div>

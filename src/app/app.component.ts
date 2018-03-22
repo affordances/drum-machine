@@ -33,7 +33,7 @@ export class AppComponent {
     this.instruments = Object.keys(this.sounds);
 
     es.togglePlayEvent.subscribe(e => {
-      this.togglePlay();
+      this.togglePlay(e);
     });
 
     es.playSoundsEvent.subscribe(e => {
@@ -41,7 +41,7 @@ export class AppComponent {
     });
 
     es.updateBpmEvent.subscribe(e => {
-      this.updateBpm();
+      this.updateBpm(e);
     });
 
     es.clearEvent.subscribe(e => {
@@ -59,8 +59,8 @@ export class AppComponent {
   }
 
   @HostListener('window:keydown', ['$event'])
-  togglePlay(event): void {
-    if (!event || event.keyCode === 32) {
+  togglePlay($event?): void {
+    if (!$event || $event.keyCode === 32) {
       if (this.playing) {
         clearInterval(this.timer);
         this.playing = false;
