@@ -20,7 +20,7 @@ export class ControlsComponent implements OnInit {
 
   emitPlay() { this.es.togglePlayEvent.emit() }
 
-  emitUpdateBpm() { this.es.updateBpmEvent.emit(this.bpm) }
+  emitUpdateBpm() { this.es.updateBpmEvent.emit() }
 
   emitClear() { this.es.clearEvent.emit() }
 }
