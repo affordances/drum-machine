@@ -61,6 +61,7 @@ export class AppComponent {
   @HostListener('window:keydown', ['$event'])
   togglePlay($event?): void {
     if (!$event || $event.keyCode === 32) {
+      event.preventDefault();
       if (this.playing) {
         clearInterval(this.timer);
         this.playing = false;
