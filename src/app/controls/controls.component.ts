@@ -18,7 +18,7 @@ export class ControlsComponent implements OnInit {
   ngOnInit() {
   }
 
-  emitPlay($event) { this.es.togglePlayEvent.emit($event) }
+  emitPlay(event) { this.es.togglePlayEvent.emit() }
 
   emitUpdateBpm() { this.es.updateBpmEvent.emit(this.bpm) }
 
