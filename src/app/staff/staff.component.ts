@@ -6,6 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./staff.component.css']
 })
 export class StaffComponent implements OnInit {
+  @Input() bpm: number;
+  @Input() playing: boolean;
   @Input() beatLocations: any;
   @Input() instruments: any;
   @Input() currentBeat: any;

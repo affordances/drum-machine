@@ -5,8 +5,8 @@
       <input type="range"
              min="40"
              max="220"
-             (change)="updateBpmEvent.emit()"
-             [(ngModel)]="bpm" />
+             [(ngModel)]="bpm"
+             (ngModelChange)="updateBpmEvent.emit($event)" />
     </div>
   </div>
   <div class="buttons-container">

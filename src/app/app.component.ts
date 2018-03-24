@@ -32,7 +32,9 @@ export class AppComponent {
     this.instruments = Object.keys(this.sounds);
   }
 
-  updateBpm(): void {
+  updateBpm(bpm): void {
+    this.bpm = bpm;
+
     if (this.playing) {
       clearInterval(this.timer);
       this.timer = setInterval(() => this.playSounds(), (15 / this.bpm) * 1000);

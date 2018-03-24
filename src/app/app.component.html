@@ -3,6 +3,8 @@
     glooper
   </div>
   <app-staff
+    [bpm]="bpm"
+    [playing]="playing"
     [currentBeat]="beat"
     [beatLocations]="beatLocations"
     [instruments]="instruments">
@@ -10,7 +12,7 @@
   <app-controls
     [bpm]="bpm"
     [playing]="playing"
-    (updateBpmEvent)="updateBpm()"
+    (updateBpmEvent) = "updateBpm($event)"
     (togglePlayEvent)="togglePlay($event)"
     (clearEvent)="clear()">
   </app-controls>
