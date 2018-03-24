@@ -9,6 +9,7 @@ import { EventsService } from '../events.service';
 export class StaffComponent implements OnInit {
   @Input() beatLocations: any;
   @Input() instruments: any;
+  @Input() currentBeat: any;
 
   constructor(private es: EventsService) { }
 

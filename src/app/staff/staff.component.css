@@ -2,6 +2,13 @@
   border: 2px solid black;
 }
 
+.transport {
+  z-index: 100;
+  border-left: 4px solid red;
+  margin-bottom: -208px;
+  margin-left: 100px;
+}
+
 .instrument-name {
   display: flex;
   align-items: center;
