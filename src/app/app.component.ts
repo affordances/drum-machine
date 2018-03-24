@@ -36,14 +36,13 @@ export class AppComponent {
     this.bpm = bpm;
 
     if (this.playing) {
-      clearInterval(this.timer);
-      this.timer = setInterval(() => this.playSounds(), (15 / this.bpm) * 1000);
+      this.resetAnimation();
     }
   }
 
   @HostListener('window:keydown', ['$event'])
   togglePlay(event): void {
-    if (event.type==='click' || event.keyCode === 32) {
+    if (event.type === 'click' || event.keyCode === 32) {
       event.preventDefault();
       if (this.playing) {
         clearInterval(this.timer);
@@ -70,6 +69,21 @@ export class AppComponent {
         this.sounds[instrument].play()
       }
     });
-    this.beat = (this.beat + 1) % 16;
+
+    this.beat = (this.beat + 1);
+
+    if (this.beat === 16) {
+      this.resetAnimation();
+    }
+  }
+
+  resetAnimation() {
+    this.playing = false;
+    clearInterval(this.timer);
+    setTimeout(() => {
+      this.beat = 0;
+      this.timer = setInterval(() => this.playSounds(), (15 / this.bpm) * 1000);
+      this.playing = true;
+    }, 1)
   }
 }

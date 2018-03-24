@@ -5,9 +5,9 @@
 .transport {
   width: 0;
   z-index: 100;
-  border-left: 4px solid red;
+  border-left: 2px solid red;
   margin-bottom: -208px;
-  margin-left: 98px;
+  margin-left: 100px;
 }
 
 @keyframes move {

@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-staff',
   templateUrl: './staff.component.html',
-  styleUrls: ['./staff.component.css']
+  styleUrls: ['./staff.component.css'],
 })
 export class StaffComponent implements OnInit {
   @Input() bpm: number;
