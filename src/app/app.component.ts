@@ -1,6 +1,5 @@
 import { Component, Output, Input, HostListener } from '@angular/core';
 import { Howl } from "howler";
-import { EventsService } from './events.service';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +20,7 @@ export class AppComponent {
     "kick": new Howl({src: ['./assets/kick.wav']})
   };
 
-  constructor(private es: EventsService) {
+  constructor() {
     Object.keys(this.sounds).forEach(instrument =>
       this.beatLocations[instrument] = Array(16).fill(false));
 
@@ -31,46 +30,28 @@ export class AppComponent {
     this.beatLocations["kick"][12] = true;
 
     this.instruments = Object.keys(this.sounds);
-
-    es.togglePlayEvent.subscribe(e => {
-      this.togglePlay(e);
-    });
-
-    es.playSoundsEvent.subscribe(e => {
-      this.playSounds();
-    });
-
-    es.updateBpmEvent.subscribe(e => {
-      this.updateBpm(e);
-    });
-
-    es.clearEvent.subscribe(e => {
-      this.clear();
-    });
   }
 
-  updateBpm(bpm): void {
-    this.bpm = bpm;
-
+  updateBpm(): void {
     if (this.playing) {
       clearInterval(this.timer);
-      this.timer = setInterval(() => this.es.playSoundsEvent.emit(), (15 / this.bpm) * 1000);
+      this.timer = setInterval(() => this.playSounds(), (15 / this.bpm) * 1000);
     }
   }
 
   @HostListener('window:keydown', ['$event'])
-  togglePlay($event?): void {
-    if (!$event || $event.keyCode === 32) {
+  togglePlay(event): void {
+    if (event.type==='click' || event.keyCode === 32) {
       event.preventDefault();
       if (this.playing) {
         clearInterval(this.timer);
         this.playing = false;
         this.beat = 0;
       } else {
-        this.timer = setInterval(() => this.es.playSoundsEvent.emit(), (15 / this.bpm) * 1000);
+        this.timer = setInterval(() => this.playSounds(), (15 / this.bpm) * 1000);
         this.playing = true;
         this.beat = 0;
-        this.es.playSoundsEvent.emit();
+        this.playSounds();
       }
     }
   }

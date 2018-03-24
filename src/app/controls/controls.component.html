@@ -5,12 +5,12 @@
       <input type="range"
              min="40"
              max="220"
-             (change)="emitUpdateBpm()"
+             (change)="updateBpmEvent.emit()"
              [(ngModel)]="bpm" />
     </div>
   </div>
   <div class="buttons-container">
-    <button (click)="emitPlay($event)">{{playing ? 'stop' : 'start'}}</button>
-    <button (click)="emitClear()">clear</button>
+    <button (click)="togglePlayEvent.emit($event)">{{playing ? 'stop' : 'start'}}</button>
+    <button (click)="clearEvent.emit()">clear</button>
   </div>
 </div>

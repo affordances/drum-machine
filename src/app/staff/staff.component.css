@@ -3,10 +3,11 @@
 }
 
 .transport {
+  width: 0;
   z-index: 100;
   border-left: 4px solid red;
   margin-bottom: -208px;
-  margin-left: 100px;
+  margin-left: 98px;
 }
 
 .instrument-name {

@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {EventsService} from '../events.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-controls',
@@ -9,18 +8,12 @@ import {EventsService} from '../events.service';
 export class ControlsComponent implements OnInit {
   @Input() bpm: number;
   @Input() playing: boolean;
-  @Input() togglePlayEvent: any;
-  @Input() updateBpmEvent: any;
-  @Input() clearEvent: any;
+  @Output() updateBpmEvent = new EventEmitter<any>();
+  @Output() clearEvent = new EventEmitter<any>();
+  @Output() togglePlayEvent = new EventEmitter<any>();
 
-  constructor(private es: EventsService) {}
+  constructor() {}
 
   ngOnInit() {
   }
-
-  emitPlay(event) { this.es.togglePlayEvent.emit() }
-
-  emitUpdateBpm() { this.es.updateBpmEvent.emit(this.bpm) }
-
-  emitClear() { this.es.clearEvent.emit() }
 }

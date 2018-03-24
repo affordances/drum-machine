@@ -1,7 +1,7 @@
 <div class="instruments-container-container">
   <div class="transport"
        [ngStyle]="{'height': (instruments.length * 52) + 'px',
-                   'transform': 'translateX(' + currentBeat * 50 + 'px)'}">
+                   'transform': 'translateX(' + ((currentBeat * 50) + 3) + 'px)'}">
   </div>
   <div class="instrument-container" *ngFor="let instrument of instruments">
     <div class="instrument-name">
