@@ -9,6 +9,7 @@ import { Howl } from "howler";
 export class AppComponent {
   bpm: number = 130;
   playing: boolean = false;
+  animationRunning: boolean = false;
   timer: number;
   beat: number = 0;
   instruments = [];
@@ -36,7 +37,7 @@ export class AppComponent {
     this.bpm = bpm;
 
     if (this.playing) {
-      this.resetAnimation();
+      this.resetAnimationForBpmChange();
     }
   }
 
@@ -47,10 +48,12 @@ export class AppComponent {
       if (this.playing) {
         clearInterval(this.timer);
         this.playing = false;
+        this.animationRunning = false;
         this.beat = 0;
       } else {
         this.timer = setInterval(() => this.playSounds(), (15 / this.bpm) * 1000);
         this.playing = true;
+        this.animationRunning = true;
         this.beat = 0;
         this.playSounds();
       }
@@ -65,7 +68,7 @@ export class AppComponent {
   incrementBeat() {
     this.beat += 1;
 
-    if (this.beat === 16) {
+    if (this.beat === 17) {
       this.resetAnimation();
     }
   }
@@ -82,12 +85,24 @@ export class AppComponent {
   }
 
   resetAnimation() {
-    this.playing = false;
+    this.animationRunning = false;
     clearInterval(this.timer);
     setTimeout(() => {
       this.timer = setInterval(() => this.playSounds(), (15 / this.bpm) * 1000);
-      this.playing = true;
+      this.animationRunning = true;
       this.beat = 0;
-    }, 1);
+      this.playSounds();
+    }, 3);
+  }
+
+  resetAnimationForBpmChange() {
+    this.animationRunning = false;
+    clearInterval(this.timer);
+    setTimeout(() => {
+      this.timer = setInterval(() => this.playSounds(), (15 / this.bpm) * 1000);
+      this.animationRunning = true;
+      this.beat = 0;
+      this.playSounds();
+    }, 3);
   }
 }

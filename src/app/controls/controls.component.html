@@ -6,7 +6,7 @@
              min="40"
              max="220"
              [(ngModel)]="bpm"
-             (ngModelChange)="updateBpmEvent.emit($event)" />
+             (mouseup)="updateBpmEvent.emit(bpm)" />
     </div>
   </div>
   <div class="buttons-container">

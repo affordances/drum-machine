@@ -7,12 +7,12 @@
   z-index: 100;
   border-left: 2px solid red;
   margin-bottom: -208px;
-  margin-left: 100px;
+  margin-left: 101px;
 }
 
 @keyframes move {
   100% {
-     transform: translateX(840px);
+     transform: translateX(836px);
   }
 }
 
