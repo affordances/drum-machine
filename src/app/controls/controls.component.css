@@ -34,6 +34,7 @@ button {
   color: black;
   font-size: 18px;
   outline: none;
+  cursor: pointer;
 }
 
 .range-container {

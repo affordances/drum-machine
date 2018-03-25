@@ -62,6 +62,14 @@ export class AppComponent {
       this.beatLocations[instrument] = Array(16).fill(false));
   }
 
+  incrementBeat() {
+    this.beat += 1;
+
+    if (this.beat === 16) {
+      this.resetAnimation();
+    }
+  }
+
   playSounds() {
     const instruments = Object.keys(this.sounds);
     instruments.forEach(instrument => {
@@ -70,20 +78,16 @@ export class AppComponent {
       }
     });
 
-    this.beat = (this.beat + 1);
-
-    if (this.beat === 16) {
-      this.resetAnimation();
-    }
+    this.incrementBeat();
   }
 
   resetAnimation() {
     this.playing = false;
     clearInterval(this.timer);
     setTimeout(() => {
-      this.beat = 0;
       this.timer = setInterval(() => this.playSounds(), (15 / this.bpm) * 1000);
       this.playing = true;
-    }, 1)
+      this.beat = 0;
+    }, 1);
   }
 }
