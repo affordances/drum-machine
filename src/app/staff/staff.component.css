@@ -2,20 +2,6 @@
   border: 2px solid black;
 }
 
-.transport {
-  width: 0;
-  z-index: 100;
-  border-left: 2px solid red;
-  margin-bottom: -208px;
-  margin-left: 101px;
-}
-
-@keyframes move {
-  100% {
-     transform: translateX(836px);
-  }
-}
-
 .instrument-name {
   display: flex;
   align-items: center;
@@ -39,6 +25,14 @@
 
 .active-beat {
   background-color: #66ccff;
+}
+
+.transport {
+  background-color: #ffff00;
+}
+
+.transport-plus-active-beat {
+  background-color: #afe182;
 }
 
 .quarter-note-left-border {
