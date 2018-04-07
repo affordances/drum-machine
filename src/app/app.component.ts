@@ -37,7 +37,10 @@ export class AppComponent {
 
     if (this.playing) {
       clearInterval(this.timer);
-      this.timer = setInterval(() => this.playSounds(), (15 / this.bpm) * 1000);
+      this.playing = false;
+      this.timer = setInterval(() => this.oneBeat(), (15 / this.bpm) * 1000);
+      this.playing = true;
+      this.beat = 0;
     }
   }
 
@@ -50,21 +53,16 @@ export class AppComponent {
         this.playing = false;
         this.beat = 0;
       } else {
-        this.timer = setInterval(() => this.playSounds(), (15 / this.bpm) * 1000);
+        this.timer = setInterval(() => this.oneBeat(), (15 / this.bpm) * 1000);
         this.playing = true;
         this.beat = 0;
-        this.playSounds();
       }
     }
   }
 
-  clear() {
-    Object.keys(this.sounds).forEach(instrument =>
-      this.beatLocations[instrument] = Array(16).fill(false));
-  }
-
-  incrementBeat() {
-    this.beat = (this.beat + 1) % 16;
+  oneBeat() {
+    this.playSounds();
+    this.incrementBeat();
   }
 
   playSounds() {
@@ -74,7 +72,14 @@ export class AppComponent {
         this.sounds[instrument].play()
       }
     });
+  }
 
-    this.incrementBeat();
+  incrementBeat() {
+    this.beat = (this.beat + 1) % 16;
+  }
+
+  clear() {
+    Object.keys(this.sounds).forEach(instrument =>
+      this.beatLocations[instrument] = Array(16).fill(false));
   }
 }
