@@ -38,9 +38,9 @@ export class AppComponent {
     if (this.playing) {
       clearInterval(this.timer);
       this.playing = false;
+      this.beat = 0;
       this.timer = setInterval(() => this.oneBeat(), (15 / this.bpm) * 1000);
       this.playing = true;
-      this.beat = 0;
     }
   }
 
@@ -53,9 +53,10 @@ export class AppComponent {
         this.playing = false;
         this.beat = 0;
       } else {
+        this.beat = 0;
         this.timer = setInterval(() => this.oneBeat(), (15 / this.bpm) * 1000);
         this.playing = true;
-        this.beat = 0;
+        this.oneBeat();
       }
     }
   }

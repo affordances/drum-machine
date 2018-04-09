@@ -10,7 +10,7 @@ export class StaffComponent implements OnInit {
   @Input() playing: boolean;
   @Input() beatLocations: any;
   @Input() instruments: any;
-  @Input() currentBeat: any;
+  @Input() currentBeat: number;
 
   constructor() { }
 
