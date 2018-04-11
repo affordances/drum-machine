@@ -6,8 +6,8 @@
     <div *ngFor="let beat of beatLocations[instrument]; let i = index"
          [ngClass]="{'beat': true,
                      'active-beat': beat,
-                     'transport': playing && i === (currentBeat - 1),
-                     'transport-plus-active-beat': playing && beat && i === (currentBeat - 1),
+                     'transport': playing && i === (currentBeat - 1 + 16) % 16,
+                     'transport-plus-active-beat': playing && beat && i === (currentBeat - 1 + 16) % 16,
                      'quarter-note-left-border': i % 4 === 0}"
          (click)="toggleBeat(instrument, i)">
     </div>
