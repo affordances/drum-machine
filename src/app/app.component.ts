@@ -10,9 +10,13 @@ export class AppComponent {
   bpm: number = 130;
   playing: boolean = false;
   timer: number;
+  start: number = 0;
+  end: number = 15;
   beat: number = 0;
+  beatForTransport: number = 0;
   instruments = [];
   beatLocations = {};
+  loopLocations = [];
   sounds = {
     "open hat": new Howl({src: ['./assets/ohh.wav']}),
     "closed hat": new Howl({src: ['./assets/chh.wav']}),
@@ -30,6 +34,8 @@ export class AppComponent {
     this.beatLocations["kick"][12] = true;
 
     this.instruments = Object.keys(this.sounds);
+
+    this.loopLocations = Array(16).fill(true);
   }
 
   updateBpm(bpm): void {
@@ -38,7 +44,7 @@ export class AppComponent {
     if (this.playing) {
       clearInterval(this.timer);
       this.playing = false;
-      this.beat = 0;
+      this.beat = this.start;
       this.timer = setInterval(() => this.oneBeat(), (15 / this.bpm) * 1000);
       this.playing = true;
     }
@@ -51,9 +57,9 @@ export class AppComponent {
       if (this.playing) {
         clearInterval(this.timer);
         this.playing = false;
-        this.beat = 0;
+        this.beat = this.start;
       } else {
-        this.beat = 0;
+        this.beat = this.start;
         this.timer = setInterval(() => this.oneBeat(), (15 / this.bpm) * 1000);
         this.playing = true;
         this.oneBeat();
@@ -76,7 +82,13 @@ export class AppComponent {
   }
 
   incrementBeat() {
-    this.beat = (this.beat + 1) % 16;
+    this.beatForTransport = this.beat;
+
+    if (this.beat === this.end) {
+      this.beat = this.start;
+    } else {
+      this.beat += 1;
+    }
   }
 
   clear() {

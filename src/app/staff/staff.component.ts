@@ -9,8 +9,9 @@ export class StaffComponent implements OnInit {
   @Input() bpm: number;
   @Input() playing: boolean;
   @Input() beatLocations: any;
+  @Input() loopLocations: any;
   @Input() instruments: any;
-  @Input() currentBeat: number;
+  @Input() beatForTransport: number;
 
   constructor() { }
 
