@@ -1,3 +1,7 @@
+<nouislider [config]="loopRangeConfig"
+            [(ngModel)]="loopRange"
+            (ngModelChange)="updateLoopRangeEvent.emit(loopRange)">
+</nouislider>
 <div class="instruments-container-container">
   <div class="instrument-container" *ngFor="let instrument of instruments">
     <div class="instrument-name">

@@ -6,8 +6,9 @@
     [bpm]="bpm"
     [playing]="playing"
     [beatForTransport] = "beatForTransport"
-    [loopLocations] = "loopLocations"
     [beatLocations]="beatLocations"
+    (updateLoopRangeEvent) = "updateLoopRange($event)"
+    [loopRange]="loopRange"
     [instruments]="instruments">
   </app-staff>
   <app-controls

@@ -10,8 +10,7 @@ export class AppComponent {
   bpm: number = 130;
   playing: boolean = false;
   timer: number;
-  start: number = 0;
-  end: number = 15;
+  loopRange = [0, 15];
   beat: number = 0;
   beatForTransport: number = 0;
   instruments = [];
@@ -34,8 +33,6 @@ export class AppComponent {
     this.beatLocations["kick"][12] = true;
 
     this.instruments = Object.keys(this.sounds);
-
-    this.loopLocations = Array(16).fill(true);
   }
 
   updateBpm(bpm): void {
@@ -44,10 +41,14 @@ export class AppComponent {
     if (this.playing) {
       clearInterval(this.timer);
       this.playing = false;
-      this.beat = this.start;
+      this.beat = this.loopRange[0];
       this.timer = setInterval(() => this.oneBeat(), (15 / this.bpm) * 1000);
       this.playing = true;
     }
+  }
+
+  updateLoopRange(loopRange): void {
+    this.loopRange = loopRange;
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -57,9 +58,9 @@ export class AppComponent {
       if (this.playing) {
         clearInterval(this.timer);
         this.playing = false;
-        this.beat = this.start;
+        this.beat = this.loopRange[0];
       } else {
-        this.beat = this.start;
+        this.beat = this.loopRange[0];
         this.timer = setInterval(() => this.oneBeat(), (15 / this.bpm) * 1000);
         this.playing = true;
         this.oneBeat();
@@ -84,8 +85,8 @@ export class AppComponent {
   incrementBeat() {
     this.beatForTransport = this.beat;
 
-    if (this.beat === this.end) {
-      this.beat = this.start;
+    if (this.beat === this.loopRange[1]) {
+      this.beat = this.loopRange[0];
     } else {
       this.beat += 1;
     }
