@@ -15,7 +15,6 @@ export class AppComponent {
   beatForTransport: number = 0;
   instruments = [];
   beatLocations = {};
-  loopLocations = [];
   sounds = {
     "open hat": new Howl({src: ['./assets/ohh.wav']}),
     "closed hat": new Howl({src: ['./assets/chh.wav']}),
