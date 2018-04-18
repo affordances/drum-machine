@@ -1,19 +1,26 @@
-<nouislider [config]="loopRangeConfig"
-            [(ngModel)]="loopRange"
-            (ngModelChange)="updateLoopRangeEvent.emit(loopRange)">
-</nouislider>
-<div class="instruments-container-container">
-  <div class="instrument-container" *ngFor="let instrument of instruments">
-    <div class="instrument-name">
-      {{instrument}}
+<div class="staff-container">
+  <div class="loop-range-container">
+    <div class="loop-range-name">loop</div>
+    <div class="loop-range">
+      <nouislider [config]="loopRangeConfig"
+                  [(ngModel)]="loopRange"
+                  (ngModelChange)="updateLoopRangeEvent.emit(loopRange)">
+      </nouislider>
     </div>
-    <div *ngFor="let beat of beatLocations[instrument]; let i = index"
-         [ngClass]="{'beat': true,
-                     'active-beat': beat,
-                     'transport': playing && i === beatForTransport,
-                     'transport-plus-active-beat': playing && beat && i === beatForTransport,
-                     'quarter-note-left-border': i % 4 === 0}"
-         (click)="toggleBeat(instrument, i)">
+  </div>
+  <div class="instruments-container-container">
+    <div class="instrument-container" *ngFor="let instrument of instruments">
+      <div class="instrument-name">
+        {{instrument}}
+      </div>
+      <div *ngFor="let beat of beatLocations[instrument]; let i = index"
+           [ngClass]="{'beat': true,
+                       'active-beat': beat,
+                       'transport': playing && i === beatForTransport,
+                       'transport-plus-active-beat': playing && beat && i === beatForTransport,
+                       'quarter-note-left-border': i % 4 === 0}"
+           (click)="toggleBeat(instrument, i)">
+      </div>
     </div>
   </div>
 </div>

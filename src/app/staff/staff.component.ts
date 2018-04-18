@@ -22,7 +22,7 @@ export class StaffComponent implements OnInit {
     range: {
       min: 0,
       max: 15
-    },
+    }
   };
 
   constructor() { }
