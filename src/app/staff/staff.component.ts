@@ -17,11 +17,10 @@ export class StaffComponent implements OnInit {
     behaviour: 'drag',
     connect: true,
     step: 1,
-    start: [0, 15],
-    margin: 1,
+    margin: 2,
     range: {
       min: 0,
-      max: 15
+      max: 16
     }
   };
 

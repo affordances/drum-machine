@@ -10,7 +10,7 @@ export class AppComponent {
   bpm: number = 130;
   playing: boolean = false;
   timer: number;
-  loopRange = [0, 15];
+  loopRange = [0, 16];
   beat: number = 0;
   beatForTransport: number = 0;
   instruments = [];
@@ -84,7 +84,7 @@ export class AppComponent {
   incrementBeat() {
     this.beatForTransport = this.beat;
 
-    if (this.beat === this.loopRange[1]) {
+    if (this.beat === this.loopRange[1] - 1) {
       this.beat = this.loopRange[0];
     } else {
       this.beat += 1;
