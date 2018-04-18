@@ -1,71 +1,5 @@
 @import "~nouislider/distribute/nouislider.min.css";
 
-nouislider {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-
-.noUi-base {
-  box-shadow: none;
-  border-radius: 0;
-}
-
-/*.noUi-origin {
-  width: 50px;
-  box-shadow: none;
-  border-radius: 0;
-}*/
-
-.noUi-target {
-  height: 47px !important;
-  background: none;
-  border: none;
-  box-shadow: none;
-}
-
-.noUi-connect {
-  background-color: yellow;
-}
-
-.noUi-handle {
-  outline: none;
-  background-color: yellow;
-  box-shadow: none;
-  border: none;
-  border-radius: 0;
-}
-
-/*.noUi-handle .noUi-handle-lower {
-  border-left: 2px solid black !important;
-  border-right: none;
-}
-
-.noUi-handle .noUi-handle-upper {
-  border-right: 2px solid black !important;
-  border-left: none;
-}*/
-
-.noUi-handle:after,
-.noUi-handle:before {
-  display: none;
-}
-
-.noUi-horizontal .noUi-handle {
-  box-sizing: border-box;
-  height: 47px;
-  width: 50px;
-}
-
-html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
-  right: -47px;
-  top: -1px;
-}
-
-.noUi-handle .noUi-handle-upper {
-  right: -30px;
-  top: -1px;
-}
-
 * {
   /*border: 1px solid black;*/
 }
@@ -77,3 +11,59 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+nouislider {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.noUi-target {
+  border: none;
+  background: none;
+  margin: 0;
+  height: 47px;
+  background: none;
+}
+
+/*This class is added to the element you call  .noUiSlider() on.
+Has border, background and other styling properties to establish
+the slider design and background.*/
+
+.noUi-base {
+
+}
+
+/*The slider bar. Serves as the calculating point for the slider handles,
+and has no visible styling.*/
+
+
+.noUi-origin {
+  top: 6px;
+  left: -15px !important;
+}
+
+/*The elements connected to the base, defining the handle locations.*/
+
+.noUi-handle {
+  outline: none;
+  box-shadow: none;
+  background: red;
+  border: none;
+  border-radius: 0;
+  height: 47px !important;
+  width: 4px !important;
+}
+
+.noUi-handle:after,
+.noUi-handle:before {
+  display: none;
+}
+
+/*The actual, visible handles. Style these any way you like!*/
+
+.noUi-connect {
+  background: yellow;
+  border: none;
+}
+
+/*Styling class for setting properties related to the slider connect segment.*/
