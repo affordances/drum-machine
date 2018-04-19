@@ -22,13 +22,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
+  width: 101px;
   border-right: 3px solid black;
 }
 
 .loop-range {
   height: 100%;
-  width: calc(100% - 100px);
+  width: calc(100% - 99px);
 }
 
 .instruments-container-container {
