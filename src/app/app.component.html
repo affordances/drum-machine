@@ -16,6 +16,8 @@
     [playing]="playing"
     (updateBpmEvent) = "updateBpm($event)"
     (togglePlayEvent)="togglePlay($event)"
+    (randomizeLoopEvent)="randomizeLoop()"
+    (resetEvent)="reset()"
     (clearEvent)="clear()">
   </app-controls>
 </div>

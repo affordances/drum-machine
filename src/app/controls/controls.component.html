@@ -10,7 +10,13 @@
     </div>
   </div>
   <div class="buttons-container">
-    <button (click)="togglePlayEvent.emit($event)">{{playing ? 'stop' : 'start'}}</button>
-    <button (click)="clearEvent.emit()">clear</button>
+    <div class="left-buttons-container">
+      <button (click)="togglePlayEvent.emit($event)">{{playing ? 'stop' : 'start'}}</button>
+      <button (click)="randomizeLoopEvent.emit()" style="border-left: none">random</button>
+    </div>
+    <div class="right-buttons-container">
+      <button (click)="resetEvent.emit()">reset</button>
+      <button (click)="clearEvent.emit()" style="border-left: none">clear</button>
+    </div>
   </div>
 </div>

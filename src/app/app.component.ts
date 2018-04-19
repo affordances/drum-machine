@@ -34,20 +34,33 @@ export class AppComponent {
     this.instruments = Object.keys(this.sounds);
   }
 
+  restartLoop() {
+    clearInterval(this.timer);
+    this.playing = false;
+    this.beat = this.loopRange[0];
+    this.timer = setInterval(() => this.oneBeat(), (15 / this.bpm) * 1000);
+    this.playing = true;
+  }
+
+  oneBeat() {
+    this.playSounds();
+    this.incrementBeat();
+  }
+
   updateBpm(bpm): void {
     this.bpm = bpm;
 
     if (this.playing) {
-      clearInterval(this.timer);
-      this.playing = false;
-      this.beat = this.loopRange[0];
-      this.timer = setInterval(() => this.oneBeat(), (15 / this.bpm) * 1000);
-      this.playing = true;
+      this.restartLoop();
     }
   }
 
   updateLoopRange(loopRange): void {
     this.loopRange = loopRange;
+
+    if (this.playing) {
+      this.restartLoop();
+    }
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -59,17 +72,10 @@ export class AppComponent {
         this.playing = false;
         this.beat = this.loopRange[0];
       } else {
-        this.beat = this.loopRange[0];
-        this.timer = setInterval(() => this.oneBeat(), (15 / this.bpm) * 1000);
-        this.playing = true;
+        this.restartLoop();
         this.oneBeat();
       }
     }
-  }
-
-  oneBeat() {
-    this.playSounds();
-    this.incrementBeat();
   }
 
   playSounds() {
@@ -91,8 +97,31 @@ export class AppComponent {
     }
   }
 
+  randomizeLoop() {
+    const upper = this.getRandomInt(0, 16);
+    const lower = this.getRandomInt(0, (upper - 2));
+
+    this.loopRange = [lower, upper];
+
+    if (this.playing) {
+      this.restartLoop();
+    }
+  }
+
+  reset() {
+    this.loopRange = [0, 16];
+
+    if (this.playing) {
+      this.restartLoop();
+    }
+  }
+
   clear() {
     Object.keys(this.sounds).forEach(instrument =>
       this.beatLocations[instrument] = Array(16).fill(false));
+  }
+
+  getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 }

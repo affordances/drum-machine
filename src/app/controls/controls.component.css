@@ -1,3 +1,14 @@
+button {
+  border: 3px solid black;
+  padding: 10px;
+  width: 106px;
+  color: black;
+  font-size: 18px;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+}
+
 .controls-container {
   display: flex;
   flex-direction: column;
@@ -18,23 +29,6 @@
   align-items: center;
   justify-content: center;
   width: 100px;
-}
-
-.buttons-container {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-button {
-  border: 3px solid black;
-  padding: 10px;
-  width: 106px;
-  color: black;
-  font-size: 18px;
-  outline: none;
-  cursor: pointer;
 }
 
 .range-container {
@@ -79,4 +73,23 @@ input[type=range]::-webkit-slider-thumb {
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -7px;
+}
+
+.buttons-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.left-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.right-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
