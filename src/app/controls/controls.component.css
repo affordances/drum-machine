@@ -3,6 +3,7 @@ button {
   padding: 10px;
   width: 106px;
   color: black;
+  background-color: white;
   font-size: 18px;
   outline: none;
   cursor: pointer;
